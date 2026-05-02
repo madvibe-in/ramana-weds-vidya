@@ -59,10 +59,10 @@ export type ScheduleItem = {
 };
 
 export const wedding = {
-  couple: "Ramana & vidya",
-  brideFirst: "vidya",
+  couple: "Ramana & Vidya",
+  brideFirst: "Vidya",
   groomFirst: "Ramana",
-  brideFull: "vidya",
+  brideFull: "Vidya",
   groomFull: "Venkataramana Chari",
   date: "May 8, 2026",
   datePill: "08 / 05 / 2026",
@@ -98,7 +98,7 @@ export const eventCards: EventCard[] = [
     name: "Sumuhurtham",
     date: "May 8, 10:35 AM",
     location: "Vempally Gadi, Mallapur, Jagitial",
-    description: "The marriage of Ramana and vidya",
+    description: "The marriage of Ramana and Vidya",
     detail: "Wedding ceremony followed by lunch",
     Icon: Heart,
     accent: "blush"
@@ -141,12 +141,12 @@ export const people: Person[] = [
   },
   {
     role: "Bride",
-    name: "vidya",
+    name: "Vidya",
     tagline: "The Bride",
     description:
-      "vidya is welcomed into this joyful union with warm wishes, family blessings, and a celebration of togetherness.",
+      "Vidya is welcomed into this joyful union with warm wishes, family blessings, and a celebration of togetherness.",
     favorites: ["Blessings", "Family", "Tradition"],
-    signature: "vidya",
+    signature: "Vidya",
     accent: "blush",
     image: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800",
     alt: "Bride in elegant traditional attire with soft natural light"
