@@ -59,10 +59,10 @@ export type ScheduleItem = {
 };
 
 export const wedding = {
-  couple: "Ramana & Vidhya",
-  brideFirst: "Vidhya",
+  couple: "Ramana & vidya",
+  brideFirst: "vidya",
   groomFirst: "Ramana",
-  brideFull: "Vidhya",
+  brideFull: "vidya",
   groomFull: "Venkataramana Chari",
   date: "May 8, 2026",
   datePill: "08 / 05 / 2026",
@@ -75,7 +75,7 @@ export const wedding = {
   venueCoordinates: "18.973448,78.781647",
   targetDate: "2026-05-08T10:35:00+05:30",
   rsvpDeadline: "May 5, 2026",
-  email: "ramanavidhya2026@gmail.com",
+  email: "ramanavidya2026@gmail.com",
   phone: "+919550840834",
   contactPhones: ["9550840834", "8500470834"],
   heroImage: "/app-icon.png",
@@ -98,7 +98,7 @@ export const eventCards: EventCard[] = [
     name: "Sumuhurtham",
     date: "May 8, 10:35 AM",
     location: "Vempally Gadi, Mallapur, Jagitial",
-    description: "The marriage of Ramana and Vidhya",
+    description: "The marriage of Ramana and vidya",
     detail: "Wedding ceremony followed by lunch",
     Icon: Heart,
     accent: "blush"
@@ -141,12 +141,12 @@ export const people: Person[] = [
   },
   {
     role: "Bride",
-    name: "Vidhya",
+    name: "vidya",
     tagline: "The Bride",
     description:
-      "Vidhya is welcomed into this joyful union with warm wishes, family blessings, and a celebration of togetherness.",
+      "vidya is welcomed into this joyful union with warm wishes, family blessings, and a celebration of togetherness.",
     favorites: ["Blessings", "Family", "Tradition"],
-    signature: "Vidhya",
+    signature: "vidya",
     accent: "blush",
     image: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800",
     alt: "Bride in elegant traditional attire with soft natural light"
