@@ -1,0 +1,127 @@
+import { motion } from "framer-motion";
+import { ExternalLink, MapPin, Navigation, Phone } from "lucide-react";
+import { useEffect, useRef } from "react";
+import SectionReveal from "../common/SectionReveal";
+import { travelRows, venueAddress, wedding } from "../../data/weddingData";
+import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
+import { gsap } from "../../lib/gsap";
+
+export default function VenueMap() {
+  const rootRef = useRef<HTMLElement | null>(null);
+  const prefersReducedMotion = useReducedMotionPreference();
+
+  useEffect(() => {
+    if (!rootRef.current || prefersReducedMotion) {
+      return undefined;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.from(".venue-info-card", {
+        y: 56,
+        opacity: 0,
+        duration: 0.85,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".venue-info-card",
+          start: "top 80%"
+        }
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, [prefersReducedMotion]);
+
+  return (
+    <section
+      id="venue"
+      ref={rootRef}
+      className="relative overflow-hidden bg-[var(--ivory)] px-4 py-20 md:px-8 md:py-28"
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-[linear-gradient(180deg,var(--pearl),rgba(248,242,239,0))]" />
+
+      <div className="relative z-10 mx-auto max-w-3xl">
+        <SectionReveal className="mx-auto mb-10 max-w-xl text-center">
+          <p className="font-script text-[46px] leading-none text-[var(--champagne-dk)]">
+            The
+          </p>
+          <h2 className="font-display text-5xl font-light uppercase leading-none text-[var(--plum)] md:text-7xl">
+            Details
+          </h2>
+        </SectionReveal>
+
+        <motion.article
+          className="venue-info-card overflow-hidden rounded-[22px] border border-[rgba(217,182,176,0.46)] bg-[var(--pearl)] shadow-[0_24px_70px_rgba(78,61,66,0.11)]"
+          whileHover={{ y: -4 }}
+          transition={{ duration: 0.28, ease: "easeOut" }}
+        >
+          <div className="bg-[linear-gradient(90deg,#eee1cf,#d8c5aa)] px-6 py-3 text-center">
+            <p className="font-display text-[15px] uppercase tracking-[0.12em] text-[var(--plum)]">
+              Location
+            </p>
+          </div>
+
+          <div className="px-6 py-8 text-center sm:px-10">
+            <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(217,182,176,0.24)] text-[var(--plum)]">
+              <MapPin size={20} aria-hidden="true" />
+            </div>
+
+            <h3 className="mt-5 font-display text-3xl font-light leading-tight text-[var(--plum)]">
+              {wedding.venue}
+            </h3>
+
+            <address className="mt-4 not-italic font-body text-[13px] uppercase leading-[1.8] tracking-[0.08em] text-[rgba(78,61,66,0.62)]">
+              {venueAddress.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </address>
+            <p className="mx-auto mt-4 max-w-sm font-display text-xl italic leading-tight text-[rgba(78,61,66,0.68)]">
+              The wedding ceremony and lunch are hosted at this venue.
+            </p>
+
+            <div className="mx-auto my-7 h-px max-w-xs bg-[linear-gradient(90deg,transparent,rgba(217,182,176,0.62),transparent)]" />
+
+            <div className="mb-4 flex flex-wrap items-center justify-center gap-3">
+              {wedding.contactPhones.map((phone) => (
+                <a
+                  key={phone}
+                  href={`tel:+91${phone}`}
+                  className="light-focus inline-flex items-center gap-2 rounded-full border border-[rgba(201,168,124,0.32)] bg-[rgba(248,242,239,0.64)] px-4 py-2 font-body text-[12px] font-semibold tracking-[0.08em] text-[rgba(78,61,66,0.72)]"
+                >
+                  <Phone size={14} aria-hidden="true" />
+                  {phone}
+                </a>
+              ))}
+            </div>
+
+            <div className="grid gap-3 text-left">
+              {travelRows.map(({ Icon, text }) => (
+                <div
+                  key={text}
+                  className="flex items-center gap-3 rounded-2xl border border-[rgba(217,182,176,0.28)] bg-[rgba(248,242,239,0.58)] px-4 py-3 font-body text-[12px] leading-snug text-[rgba(78,61,66,0.66)]"
+                >
+                  <Icon size={16} className="shrink-0 text-[var(--champagne-dk)]" aria-hidden="true" />
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+
+            <motion.a
+              href={wedding.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="light-focus mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[linear-gradient(90deg,#eee1cf,#d8c5aa)] px-7 py-4 font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-[var(--plum)] shadow-[0_14px_34px_rgba(78,61,66,0.1)] sm:w-auto sm:min-w-[260px]"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <Navigation size={16} aria-hidden="true" />
+              Get directions
+              <ExternalLink size={14} aria-hidden="true" />
+            </motion.a>
+          </div>
+        </motion.article>
+      </div>
+    </section>
+  );
+}
